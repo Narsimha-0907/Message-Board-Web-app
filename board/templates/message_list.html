@@ -1,0 +1,9 @@
+<h1>Message Board</h1>
+<a href="{% url 'message_create' %}">New Message</a>
+<ul>
+  {% for message in object_list %}
+    <li>
+      <a href="{% url 'message_detail' message.pk %}">{{ message.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
