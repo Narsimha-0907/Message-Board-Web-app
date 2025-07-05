@@ -1,6 +1,12 @@
-<h1>{{ object.title }}</h1>
-<p>{{ object.body }}</p>
-<p>Created at: {{ object.created_at }}</p>
-<a href="{% url 'message_update' object.pk %}">Edit</a> |
-<a href="{% url 'message_delete' object.pk %}">Delete</a> |
-<a href="{% url 'message_list' %}">Back to list</a>
+{% extends 'base.html' %}
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+  <h1>{{ object.title }}</h1>
+  <p class="text-muted">Created at: {{ object.created_at }}</p>
+  <p>{{ object.body }}</p>
+  <hr>
+  <a class="btn btn-secondary" href="{% url 'message_update' object.pk %}">Edit</a>
+  <a class="btn btn-danger" href="{% url 'message_delete' object.pk %}">Delete</a>
+  <a class="btn btn-outline-primary" href="{% url 'message_list' %}">Back to list</a>
+{% endblock %}

@@ -1,9 +1,16 @@
-<h1>Message Board</h1>
-<a href="{% url 'message_create' %}">New Message</a>
-<ul>
-  {% for message in object_list %}
-    <li>
-      <a href="{% url 'message_detail' message.pk %}">{{ message.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+{% extends 'base.html' %}
+{% block title %}Messages{% endblock %}
+
+{% block content %}
+  <h1 class="mb-4">Message Board</h1>
+  <a class="btn btn-primary mb-3" href="{% url 'message_create' %}">New Message</a>
+  <ul class="list-group">
+    {% for message in object_list %}
+      <li class="list-group-item">
+        <a href="{% url 'message_detail' message.pk %}">{{ message.title }}</a>
+      </li>
+    {% empty %}
+      <li class="list-group-item">No messages yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
